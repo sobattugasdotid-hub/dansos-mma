@@ -260,6 +260,8 @@ function countUp() {
 
 // Slider: pindah otomatis tiap 5 detik, berhenti saat disentuh/diarahkan/fokus, tombol jeda, dan navigasi keyboard
 function showSlide(i, instant) {
+  // Beranda belum dirender (data belum datang): jangan menyentuh elemen yang belum ada
+  if (!$('#sj')) return;
   if (!SL.length) {
     $('#sj').textContent = 'Portal Dana Sosial';
     $('#sd').textContent = '';
