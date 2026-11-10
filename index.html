@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dansos MMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script>
+(function () {
+  try {
+    var t = JSON.parse(localStorage.getItem('dm2:theme'));
+    if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+    document.documentElement.dataset.theme = t;
+  } catch (e) {
+    document.documentElement.dataset.theme = 'light';
+  }
+})();
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <div class="brand">
+      <span class="logo" id="logo">DM</span>
+      <div><b id="bn">Dansos MMA</b><small id="bo"></small></div>
+    </div>
+    <nav id="tabs" aria-label="Menu utama">
+      <button data-act="go" data-v="home"><svg class="ic" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg><span>Beranda</span></button>
+      <button data-act="go" data-v="donasi"><svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg><span>Donasi</span></button>
+      <button data-act="go" data-v="ajuan"><svg class="ic" viewBox="0 0 24 24"><path d="M9 4h6l4 4v12H5V4h4zM9 12h6M9 16h6"/></svg><span>Ajuan</span></button>
+      <button data-act="go" data-v="transparansi"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Transparansi</span></button>
+    </nav>
+    <div class="acts">
+      <button class="ib" id="thm" data-act="theme" aria-label="Ganti tema siang/malam"></button>
+      <button class="btn gold sm" data-act="pengurus"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg> <span class="hm">Login Admin</span></button>
+    </div>
+  </div>
+</header>
+<main id="app">
+  <section id="v-home" class="view"><div class="wrap"><div class="card sk">Memuat…</div></div></section>
+  <section id="v-donasi" class="view" hidden></section>
+  <section id="v-ajuan" class="view" hidden></section>
+  <section id="v-transparansi" class="view" hidden></section>
+  <section id="v-login" class="view wrap narrow" hidden>
+    <form class="card" id="lf" data-form="login">
+      <h1>Login Admin</h1>
+      <label>Email<input name="e" type="email" autocomplete="username" required></label>
+      <label>Kata sandi<input name="p" type="password" autocomplete="current-password" required></label>
+      <button class="btn" id="lb" type="submit">Masuk</button>
+    </form>
+  </section>
+  <section id="v-admin" class="view wrap" hidden><div id="adm"></div></section>
+</main>
+<footer id="ft"></footer>
+<dialog id="dlg"></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
