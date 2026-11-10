@@ -1,4 +1,3 @@
-
 (function () {
 'use strict';
 
@@ -156,7 +155,8 @@ async function boot() {
     S.t = Date.now();
     if (!S.pub || p.ts !== S.pub.ts) { S.pub = p; LS.s('pub', p); renderPub(); }
   } catch (e) {
-    if (!S.pub) $('#v-home').innerHTML = '<div class="wrap"><div class="card">Gagal memuat data. <button class="btn sm" data-act="boot">Coba lagi</button></div></div>';
+    if (!S.pub) $('#v-home').innerHTML = '<div class="wrap"><div class="card"><b>Gagal memuat data.</b><p class="mut">' + esc(e.message) +
+      '</p><p class="mut">Alamat backend: ' + esc(API_URL) + '</p><button class="btn sm" data-act="boot">Coba lagi</button></div></div>';
   }
   read('jadwal').then(j => { S.jd = j; renderSholat(); }).catch(() => { S.jd = null; renderSholat(); });
 }
